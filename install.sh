@@ -4,6 +4,8 @@ set -e
 
 source .env
 
-wsk package create couchdb
-wsk action update couchdb/changes feed/changes.js -p mgmtdbUrl ${DB_URL} -p mgmtdbName ${DB_NAME_TRIGGERS}
-wsk action update couchdb/provider feed/provider.js -p mgmtdbUrl ${DB_URL} -p mgmtdbName ${DB_NAME_TRIGGERS}
+./uninstall.sh
+
+wsk package create couchdb 
+wsk action create couchdb/changes feed/changes.js -p mgmtdbUrl ${DB_URL} -p mgmtdbName ${DB_NAME_TRIGGERS} -p endpoint $(wsk property get --apihost | awk '{printf $4}')
+wsk action create couchdb/provider feed/provider.js -p mgmtdbUrl ${DB_URL} -p mgmtdbName ${DB_NAME_TRIGGERS}

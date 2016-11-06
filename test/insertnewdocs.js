@@ -9,7 +9,7 @@ for (var i = 0; i < 2; i++) {
 }
 
 function createDoc(db) {
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 3; i++) {
     setTimeout(function () {
       db.insert({
         foo: new Date().toDateString(),

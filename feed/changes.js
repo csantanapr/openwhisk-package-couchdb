@@ -13,7 +13,7 @@ function main({
   mgmtdbUrl: mgmtdbUrl = 'http://localhost:5498',
   mgmtdbName: mgmtdbName = 'triggers',
   authKey: authKey,
-  endpoint: endpoint
+  endpoint: endpoint = 'openwhisk.ng.bluemix.net'
 }) {
   triggerName = triggerName.split("/");
   var triggerUrl = 'https://' + authKey + "@" + endpoint + '/api/v1/namespaces/' + encodeURIComponent(triggerName[1]) + '/triggers/' + encodeURIComponent(triggerName[2]);
