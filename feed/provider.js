@@ -24,13 +24,11 @@ function main({
                 include_docs: trigger.doc.include_docs,
                 filter: trigger.doc.filter
               }, function (err, body) {
-                console.log('returning from changes', body.results.length);
                 if (!err) {
-                  //console.log(body);
                   trigger.doc.since = body.last_seq;
                   triggersDB.insert(trigger.doc, function (err, body2) {
                     if (body && body.results && body.results.length && body.results.length > 0) {
-                      //handleChanges(body, trigger.id, trigger.doc.include_docs, resolve2);
+                      console.log(`Found ${body.results.length} on database ${trigger.doc.dbName}`);
                       console.log(`Firing trigger ${trigger.id}`);
                       request.post({
                         url: trigger.id,

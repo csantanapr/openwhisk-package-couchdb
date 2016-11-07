@@ -5,7 +5,7 @@ var nano = require('nano')(DB_URL);
 var db_prefix = 'customers';
 
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 200; i++) {
   setTimeout(function (i) {
     // clean up the database we created previously
     nano.db.destroy(`${db_prefix}_${i}`, function () {
